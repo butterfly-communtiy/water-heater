@@ -1,3 +1,15 @@
+# GPIO2  SPI CLK   屏幕
+# GPIO3                       温度传感器 ADC
+# GPIO4                       加热继电器
+# GPIO5  SPI MOSI  屏幕
+# GPIO6  SPI DC    屏幕
+# GPIO7  SPI CS    屏幕
+# GPIO8  SPI RESET 屏幕
+# GPIO10                      加热提醒
+# GPIO18                      蓝色 LED
+# GPIO19                      红色 LED
+
+
 esphome:
   name: "water-heater"
   friendly_name: Water-Heater
@@ -54,7 +66,7 @@ wifi:
 
   ap:
     ssid: "Water Heater Fallback Hotspot"
-    password: !secret ap_key
+    password: !secret ap_password
 
 captive_portal:
 
@@ -104,6 +116,44 @@ sensor:
     pin: GPIO3
     update_interval: 30s
     attenuation: auto
+
+spi:
+  clk_pin: GPIO2
+  mosi_pin: GPIO5
+  
+display:
+  - platform: st7735
+    model: "INITR_GREENTAB"
+    reset_pin: GPIO8
+    cs_pin: GPIO7
+    dc_pin: GPIO6
+    rotation: 0
+    device_width: 128
+    device_height: 128
+    col_start: 0
+    row_start: 3
+    use_bgr: true
+    eight_bit_color: false
+    update_interval: 1s
+    lambda: |-
+      // 显示加热状态
+      it.printf(0, 20, id(font_x), " Heating:  %s", id(heating_control).state ? "On" : "Off");
+      // 显示当前温度
+      it.printf(0, 50, id(font_x), " Current:  %.1f °C", id(current_temperature).state);
+      // 显示目标温度
+      it.printf(0, 80, id(font_x), " Target:    %.1f °C", id(target_temperature).state);
+
+font:
+  - file: "gfonts://Noto Sans SC"
+    id: font_x
+    size: 18
+    bpp: 8
+
+# image:
+#   - file: "ran.jpg"
+#     id: esphome_logo
+#     resize: 128x128
+#     type: RGBA
 
 switch:
   - platform: gpio
