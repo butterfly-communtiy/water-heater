@@ -185,7 +185,7 @@ sensor:
 binary_sensor:
   - platform: esp32_touch
     pin: GPIO8
-    threshold: 110000
+    threshold: 109000
     id: power_touch
     on_click:
       then:
@@ -200,7 +200,7 @@ binary_sensor:
 
   - platform: esp32_touch
     pin: GPIO2
-    threshold: 113500
+    threshold: 113000
     id: heating_touch
     on_click:
       then:
@@ -215,7 +215,7 @@ binary_sensor:
 
   - platform: esp32_touch
     pin: GPIO4
-    threshold: 92500
+    threshold: 92000
     id: inc_touch
     on_click:
       then:
@@ -226,7 +226,7 @@ binary_sensor:
 
   - platform: esp32_touch
     pin: GPIO1
-    threshold: 103000
+    threshold: 102000
     id: dec_touch
     on_click:
       then:
