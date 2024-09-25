@@ -1,10 +1,6 @@
-## 开源太阳能热水器控制
+## Open-source Solar Water Heater Control
 
-这个项目是对传统太阳能热水器的改造，让传统的热水器具备智能化操作。
+This project upgrades traditional solar water heaters for smart operation. The firmware uses ESPHome for simplicity and ease of use. For more details and insights, please visit my blog.
+[https://blog.lastline.tech](https://blog.lastline.tech)
 
-固件使用 ESPHome，方便易懂。
-
-查看更多思路和过程请查看我的博客: https://blog.lastline.tech
-
-## 电路图
 ![img](./water-heater.svg)![]()
