@@ -8,3 +8,6 @@
 
 ## 电路图
 ![img](./water-heater.svg)![]()
+
+## PCB
+![img](./water-heater-pcb.png)![]()
